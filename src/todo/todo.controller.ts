@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Query, Body, Post } from '@nestjs/common';
-// import { Controller, Get, Param, Query, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Param, Query, Body } from '@nestjs/common';
+import { Get, Post, Patch } from '@nestjs/common';
 
 import { CreateTodoDto } from './dto/creat-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Controller('todos')
 export class TodoController {
@@ -51,5 +52,11 @@ export class TodoController {
   async create(@Body() createTodoDto: CreateTodoDto) {
     console.log(createTodoDto);
     return createTodoDto;
+  }
+
+  @Patch()
+  async update(@Body() updateTodoDto: UpdateTodoDto) {
+    console.log(updateTodoDto);
+    return updateTodoDto;
   }
 }
